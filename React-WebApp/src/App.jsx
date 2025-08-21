@@ -1,19 +1,22 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import Footer from "./Components/Footer";
-import Navbar from "./Components/Navbar";
+import { Route, createBrowserRouter, createRoutesFromElements,RouterProvider } from "react-router-dom";
+import MainLayout from "./Layouts/MainLayout";
+import HomePage from "./Pages/HomePage";
+import AboutPage from "./Pages/AboutPages";
+import NotFound from "./Pages/NotFound";
+
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  return (
-    <>
-      <Navbar />
-      <Footer />
-      
-    </>
-  );
+   const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path = "/"element= {<MainLayout /> }>
+      <Route index element = {<HomePage/>}/>
+      <Route path = "/about" element={<AboutPage />}/>
+      <Route path = "*" element={<NotFound />}/>
+      </Route>
+    )
+  )
+  
+  return <RouterProvider router={router} />;
 }
 
-export default App;
+export default App; 
