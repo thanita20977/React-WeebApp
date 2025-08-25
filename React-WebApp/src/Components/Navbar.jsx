@@ -3,7 +3,7 @@ import reactLogo from "../assets/react.svg";
 import { Link, NavLink } from "react-router-dom";
 
 function Navbar() {
-  function activeLink({ isActive }) {
+  function activeLink({ isActive }) {   //บอกตำแหน่งว่าอยู่แท็ปไหน
     return isActive
       ? "bg-blue-700 bg-opacity-60 rounded px-3 py-2"
       : "hover:bg-blue-700 hover:bg-opacity-20 rounded px-3 py-2";
@@ -12,8 +12,9 @@ function Navbar() {
   return (
     <header>
       <div className="flex mr-auto gap-x-2 font-semibold text-2xl">
-        {" "}
+        <Link to="/">
         <img src={reactLogo} alt="React Logo" />
+        </Link> 
         React : TODO List
         <img src={reactLogo} className="logo react" alt="React logo" />
       </div>
