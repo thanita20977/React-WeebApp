@@ -12,6 +12,8 @@
      @apply flex flex-col flex-1 justify-center place-items-center;
  }
  footer {
-     @apply px-4 md:px-6 py-3 bg-slate-600 text-white items-center;
+      @apply p-1 bg-gray-100 rounded-sm text-gray-500 hover:bg-gray-200;
  }
-
+ .todo-btn {
+    @apply p-1 bg-gray-100 rounded-sm text-gray-500 hover:bg-gray-200;
+ }
