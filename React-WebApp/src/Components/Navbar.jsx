@@ -27,7 +27,12 @@ function Navbar() {
         </li>
         <li>
           <NavLink to="/about" className={activeLink}>
-            About
+           about
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/products" className={activeLink}>
+           products
           </NavLink>
         </li>
       </ul>
