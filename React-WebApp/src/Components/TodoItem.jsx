@@ -4,11 +4,30 @@ import { useRef, useState } from "react";
 function TodoItem(props) {
   const dialog = useRef();
   const [editing, setEditing] = useState(false);
+  const [title, setTitle] = useState(props.todo.title);
+
+  const summitForm = (e) => {
+    e.preventDefault();
+    if (editing) {
+      const task = {
+        title: title,
+        date: new Date().toLocaleString(),
+      };
+      console.log(task);
+      props.updateTask(task, props.id);
+    } else {
+      props.deleteTask(props.id);
+    }
+
+    closeModal();
+  };
+
   const openModal = (isEditing) => {
     isEditing ? setEditing(true) : setEditing(false);
     dialog.current.showModal();
   };
-  const closeModal =(e) => [dialog.current.close()];
+
+  const closeModal = (e) => [dialog.current.close()];
   const ClickOutside = (e) => {
     if (e.target === dialog.current) {
       closeModal();
@@ -44,14 +63,33 @@ function TodoItem(props) {
           </button>
         </div>
       </li>
-      <dialog ref={dialog} onClick={ClickOutside}className="rounded-md w-[480px">
-        <form className="p-6">
+      <dialog
+        ref={dialog}
+        onClick={ClickOutside}
+        className="rounded-md w-[480px] fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 x-50"
+      >
+        <form onSubmit={summitForm} className="p-6">
           <h3 className="font-semibold text-xl">
             {editing ? "Edit Task" : "Do you want to Delete"}
           </h3>
+
           <div className="mt-2">
-            {editing ? "Edit" : "This will delete the task permanently."}
+            {editing ? (
+              <input
+                type="text"
+                className="focus:outline-none w-full border rounded py-2 px-3"
+                maxLength="30"
+                placeholder="Type Something here..."
+                autoFocus
+                required
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+              />
+            ) : (
+              "This will delete the task permanently."
+            )}
           </div>
+
           <div className="mt-2 text-end space-x-2">
             <button
               type="submit"
