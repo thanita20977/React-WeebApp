@@ -26,7 +26,7 @@ function Navbar() {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/about" className={activeLink}>
+          <NavLink to="/about" className={activeLink}>    
            about
           </NavLink>
         </li>
@@ -40,4 +40,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default Navbar; 

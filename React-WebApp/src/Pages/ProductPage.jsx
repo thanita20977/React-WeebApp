@@ -32,7 +32,7 @@ function ProductPage() {
 
   return (
     <>
-      <div className="flex items-center gap-2 mb-4">
+      <div className="flex items-center gap-2 mb-4 mt-20">
         <input
           type="text"
           placeholder="Search products..."
@@ -40,15 +40,13 @@ function ProductPage() {
           onChange={handleSearch}
           className="w-full p-2 border rounded bg-white"
         />
-        <button className="bg-blue-400 text-white p-2 rounded flex items-center">
-          <FaMagnifyingGlass className="mr-2" /> Search
-        </button>
+        
       </div>
 
       {filteredProducts.length > 0 ? (
         <table className="min-w-full mt-6 border-collapse">
-          <thead className="bg-gray-300">
-            <tr className="bg-gray-200">
+          <thead className="bg-pink-400">
+            <tr className="bg-pink-500">
               <th className="px-4 py-2">#</th>
               <th className="px-4 py-2">Name</th>
               <th className="px-4 py-2">Description</th>
